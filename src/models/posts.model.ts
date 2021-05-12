@@ -2,7 +2,8 @@ import { UsuarioModel } from "./usuario.model";
 
 export class PostsModel {
   id!: number;
-  text!: string;
+  titulo!: string;
+  description!: string;
   dateCreated!: Date;
   usuario!: UsuarioModel;
 }

@@ -4,6 +4,8 @@
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -27,6 +29,7 @@
       "scripthost"
     ]
   },
+  "compileOnSave": true,
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",

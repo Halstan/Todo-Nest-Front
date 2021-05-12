@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
-import Posts from '../views/Posts.vue';
+import store from '../store/index'
 
 Vue.use(VueRouter)
 
@@ -22,7 +22,8 @@ const routes: Array<RouteConfig> = [
   {
     path: '/posts',
     name: 'Posts',
-    component: Posts
+    component: () => import(/* webpackChunkName: "posts" */ '../views/Posts.vue'),
+    meta: { userAuthenticated: true }
   },
   {
     path: '/login',
@@ -35,6 +36,16 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.userAuthenticated)) {
+    if (store.getters.usuarioAutenticado) {
+      next();
+    } else {
+      next( { name: 'Login' } );
+    }
+  } else next()
 })
 
 export default router
