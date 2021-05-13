@@ -40,7 +40,6 @@ export default new Vuex.Store({
     deletePosts(state, payload: number) {
       const index = state.postsLists.findIndex(post => post.id == payload)
       state.postsLists.splice(index, 1)
-      console.log(state.postsLists);
       
     },
     setEditable(state, payload) {
@@ -78,6 +77,7 @@ export default new Vuex.Store({
       try {
         const res = await addPosts(payload.posts, payload.token)
         state.postsLists.push(res.data)
+        state.posts = new PostsModel()
       } catch (error) {
         console.log(error);
         

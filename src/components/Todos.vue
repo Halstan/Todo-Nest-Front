@@ -6,8 +6,12 @@
         <p>{{ post.description }}</p>
       </v-card-text>
       <v-card-actions>
-        <v-btn color="success" @click="findPosts(post.id)">Editar</v-btn>
-        <v-btn color="error" @click="deletePosts(post.id)">{{post.id}}</v-btn>
+        <v-btn color="success" @click="findPosts(post.id)">
+          <v-icon>far fa-edit</v-icon>
+        </v-btn>
+        <v-btn color="error" @click="deletePosts(post.id)">
+          <v-icon>fas fa-trash-alt</v-icon>
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
